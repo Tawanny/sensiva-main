@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/theme/theme.dart';
 
-import '../../../theme/sh_icons.dart';
-
 class ShAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ShAppBar({
     super.key,

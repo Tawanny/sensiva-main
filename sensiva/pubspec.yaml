@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
 
 ## UI
+  gap: ^3.0.1
   iconly: ^1.0.1
   ionicons: ^0.2.2
   cupertino_icons: ^1.0.2

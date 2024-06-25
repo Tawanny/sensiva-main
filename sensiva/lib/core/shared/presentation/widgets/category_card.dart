@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sensiva/features/smart_room/screens/room_details_screen.dart';
+import 'package:sensiva/screens/categories/category_screen.dart';
 import 'package:ui_common/ui_common.dart';
 
 import '../../../../features/home/presentation/widgets/background_info_card.dart';

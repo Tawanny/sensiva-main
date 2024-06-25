@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/shared/domain/entities/smart_room.dart';
 import '../../../core/shared/presentation/widgets/category_card.dart';
-import '../../../features/smart_room/screens/room_details_screen.dart';
+import '../../categories/category_screen.dart';
 
 class CategoryPageView extends StatelessWidget {
   const CategoryPageView({
@@ -68,8 +68,7 @@ class CategoryPageView extends StatelessWidget {
                               ),
                               pageBuilder: (_, animation, __) => FadeTransition(
                                   opacity: animation,
-                                  child:
-                                      CategoryDetailScreen(category: category)),
+                                  child: CategoryScreen(category: category)),
                             ),
                           );
                           catSelectorNotifier.value = -1;
