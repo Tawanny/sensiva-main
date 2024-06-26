@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/theme/theme.dart';
 
 import '../components/tabbar_item.dart';

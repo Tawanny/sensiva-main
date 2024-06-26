@@ -7,6 +7,10 @@ import 'package:sensiva/core/core.dart';
 import 'package:ui_common/ui_common.dart';
 import 'components/cat_app_bar.dart';
 import 'components/tabbar_item.dart';
+import 'edibles/tabs/baked.dart';
+import 'edibles/tabs/candy.dart';
+import 'edibles/tabs/drinks.dart';
+import 'edibles/tabs/ice_cream.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({
@@ -26,7 +30,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     Animation<double> animation = const AlwaysStoppedAnimation<double>(1);
     final sigma = 10 * animation.value;
     return DefaultTabController(
-      length: 5,
+      length: 4,
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -92,7 +96,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             subtitle: Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: Text(
-                                'Some catchy subtitle here!!',
+                                'For all the food lovers who can\'t smoke',
                                 style: context.bodyMedium.copyWith(
                                   height: .9,
                                   color: ThemeColors.textColor,
@@ -108,275 +112,26 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           indicatorColor: Colors.transparent,
                           tabs: [
                             TabbarItem(
-                              text: 'Bongs',
+                              text: 'Baked',
                             ),
                             TabbarItem(
-                              text: 'Lighters',
+                              text: 'Candy',
                             ),
                             TabbarItem(
-                              text: 'Rizzla sdshhdfc dhhd',
+                              text: 'Drinks',
                             ),
                             TabbarItem(
-                              text: 'Filters',
-                            ),
-                            TabbarItem(
-                              text: 'Oils',
+                              text: 'Ice Cream and Sobert',
                             ),
                           ],
                         ),
-                        Expanded(
+                        const Expanded(
                           child: TabBarView(
                             children: [
-                              Container(
-                                color: Colors.transparent,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 260,
-                                      child: ListView.builder(
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: 5,
-                                          itemBuilder:
-                                              (BuildContext context, index) {
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Card(
-                                                elevation: 15,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                ),
-                                                child: Container(
-                                                  height: 250,
-                                                  width: 150,
-                                                  padding:
-                                                      const EdgeInsets.all(10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      const CircleAvatar(
-                                                        radius: 50,
-                                                        backgroundImage: AssetImage(
-                                                            'assets/images/edibles.jpg'),
-                                                      ),
-                                                      const Gap(20),
-                                                      Text(
-                                                        'Sugar Dusted Jelly Candy',
-                                                        style: context
-                                                            .bodyMedium
-                                                            .copyWith(
-                                                          height: .9,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                      const Gap(20),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            '10mg',
-                                                            style: context
-                                                                .bodyMedium
-                                                                .copyWith(
-                                                              height: .9,
-                                                              color:
-                                                                  Colors.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: 20,
-                                                            width: 70,
-                                                            alignment: Alignment
-                                                                .center,
-                                                            decoration: BoxDecoration(
-                                                                color: Colors
-                                                                    .black,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            6)),
-                                                            child: Text(
-                                                              'R200',
-                                                              style: context
-                                                                  .titleSmall
-                                                                  .copyWith(
-                                                                height: .9,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      const Spacer(),
-                                                      const Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Icon(
-                                                            IconlyLight.plus,
-                                                            color: ThemeColors
-                                                                .prColor,
-                                                          ),
-                                                          Icon(
-                                                            IconlyLight.heart,
-                                                            color: ThemeColors
-                                                                .prColor,
-                                                          )
-                                                        ],
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }),
-                                    ),
-                                    SizedBox(
-                                      height: 260,
-                                      child: ListView.builder(
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: 5,
-                                          itemBuilder:
-                                              (BuildContext context, index) {
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Card(
-                                                elevation: 15,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                ),
-                                                child: Container(
-                                                  height: 250,
-                                                  width: 150,
-                                                  padding:
-                                                      const EdgeInsets.all(10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      const CircleAvatar(
-                                                        radius: 50,
-                                                        backgroundImage: AssetImage(
-                                                            'assets/images/edibles.jpg'),
-                                                      ),
-                                                      const Gap(20),
-                                                      Text(
-                                                        'Sugar Dusted Jelly Candy',
-                                                        style: context
-                                                            .bodyMedium
-                                                            .copyWith(
-                                                          height: .9,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                      const Gap(20),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            '10mg',
-                                                            style: context
-                                                                .bodyMedium
-                                                                .copyWith(
-                                                              height: .9,
-                                                              color:
-                                                                  Colors.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: 20,
-                                                            width: 70,
-                                                            alignment: Alignment
-                                                                .center,
-                                                            decoration: BoxDecoration(
-                                                                color: Colors
-                                                                    .black,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            6)),
-                                                            child: Text(
-                                                              'R200',
-                                                              style: context
-                                                                  .titleSmall
-                                                                  .copyWith(
-                                                                height: .9,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      const Spacer(),
-                                                      const Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Icon(
-                                                            IconlyLight.plus,
-                                                            color: ThemeColors
-                                                                .prColor,
-                                                          ),
-                                                          Icon(
-                                                            IconlyLight.heart,
-                                                            color: ThemeColors
-                                                                .prColor,
-                                                          )
-                                                        ],
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(color: Colors.transparent),
-                              Container(color: Colors.transparent),
-                              Container(color: Colors.transparent),
-                              Container(color: Colors.transparent),
+                              Baked(),
+                              Candy(),
+                              Drinks(),
+                              IceCream(),
                             ],
                           ),
                         ),

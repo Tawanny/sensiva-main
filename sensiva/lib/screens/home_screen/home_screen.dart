@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     super.dispose();
-    controller..removeListener(pageListener);
+    controller.removeListener(pageListener);
   }
 
   @override

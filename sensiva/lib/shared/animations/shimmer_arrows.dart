@@ -65,7 +65,7 @@ class _ShimmerArrowsState extends State<ShimmerArrows>
 class _SliderGradientTransform extends GradientTransform {
   final double percent;
 
-  _SliderGradientTransform({required this.percent});
+  const _SliderGradientTransform({required this.percent});
   @override
   Matrix4? transform(Rect bounds, {TextDirection? textDirection}) {
     return Matrix4.translationValues(0, -(bounds.height * percent), 0);
