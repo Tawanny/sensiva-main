@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sensiva/screens/categories/aparatus/aparatus.dart';
+
+import '../../screens/categories/categories.dart';
 
 class CategoryModel {
   CategoryModel({
@@ -34,30 +35,23 @@ class CategoryModel {
   static List<CategoryModel> fakeValues = [
     _room,
     _room.copyWith(
-      id: '2',
-      name: 'PRE-ROLLED',
-      imageUrl: _imagesUrls[1],
+      id: '5',
+      name: 'STRAINS',
+      imageUrl: _imagesUrls[3],
       tabLength: 4,
-      screen: const Aparatus(),
+      screen: const Strains(),
     ),
     _room.copyWith(
       id: '3',
       name: 'EDIBLES',
-      imageUrl: _imagesUrls[2],
+      imageUrl: _imagesUrls[1],
       tabLength: 4,
-      screen: const Aparatus(),
+      screen: const Edibles(),
     ),
     _room.copyWith(
       id: '4',
-      name: 'APARATUS',
-      imageUrl: _imagesUrls[3],
-      tabLength: 4,
-      screen: const Aparatus(),
-    ),
-    _room.copyWith(
-      id: '5',
-      name: 'STRAINS',
-      imageUrl: _imagesUrls[4],
+      name: 'ACCESORIES',
+      imageUrl: _imagesUrls[2],
       tabLength: 4,
       screen: const Aparatus(),
     ),
@@ -72,7 +66,6 @@ final _room = CategoryModel(
 
 const _imagesUrls = [
   'assets/images/weed_news.jpg',
-  'assets/images/pre-rolled.jpg',
   'assets/images/edibles.jpg',
   'assets/images/aparatus.jpg',
   'assets/images/strains.png',

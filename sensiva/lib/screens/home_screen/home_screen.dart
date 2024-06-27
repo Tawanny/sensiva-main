@@ -1,11 +1,14 @@
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/core.dart';
+import 'package:sensiva/screens/home_screen/tabs/account.dart';
+import 'package:sensiva/screens/home_screen/tabs/favourite.dart';
 import 'package:ui_common/ui_common.dart';
 
-import 'components/category_page_view.dart';
 import '../../features/home/presentation/widgets/lighted_background.dart';
-import 'components/page_indicators.dart';
+import 'tabs/cart.dart';
+import 'tabs/home.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var currentIndex = 0;
   final controller = PageController(viewportFraction: 0.8);
   final ValueNotifier<double> pageNotfier = ValueNotifier(0);
   final ValueNotifier<int> catSelectorNotifier = ValueNotifier(-1);
@@ -38,93 +42,119 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    List<Widget> tabs = [
+      Home(
+        controller: controller,
+        pageNotfier: pageNotfier,
+        catSelectorNotifier: catSelectorNotifier,
+      ),
+      const Favourite(),
+      const Cart(),
+      const Account(),
+    ];
     return LightedBackgound(
       child: Scaffold(
+        extendBody: true,
         backgroundColor: Colors.transparent,
         appBar: const ShAppBar(),
-        body: SafeArea(
-          child: Column(
-            children: [
-              const SizedBox(height: 24),
-              Text('What are you looking for today?', style: context.bodyLarge),
-              height32,
-              Expanded(
-                child: Stack(
-                  fit: StackFit.expand,
-                  clipBehavior: Clip.none,
-                  children: [
-                    CategoryPageView(
-                      controller: controller,
-                      pageNotfier: pageNotfier,
-                      catSelectorNotifier: catSelectorNotifier,
-                    ),
-                    Positioned.fill(
-                      top: null,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 30.0),
-                        child: PageIndicators(
-                          catSelectorNotifier: catSelectorNotifier,
-                          pageNotifer: pageNotfier,
-                        ),
+        body: tabs[currentIndex],
+        bottomNavigationBar: ValueListenableBuilder(
+            valueListenable: catSelectorNotifier,
+            builder: (_, selectedPage, __) {
+              return AnimatedOpacity(
+                opacity: selectedPage == -1 ? 1 : 0,
+                duration: const Duration(microseconds: 100),
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(.15),
+                        blurRadius: 30,
+                        offset: const Offset(0, 10),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: ListView.builder(
+                    itemCount: 4,
+                    scrollDirection: Axis.horizontal,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: size.width * .024),
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () {
+                        setState(
+                          () {
+                            currentIndex = index;
+                          },
+                        );
+                      },
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 1500),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                            margin: const EdgeInsets.only(right: 20, left: 20),
+                            width: 50,
+                            height: index == currentIndex ? 5 : 0,
+                            decoration: const BoxDecoration(
+                              color: ThemeColors.prColor,
+                              borderRadius: BorderRadius.vertical(
+                                bottom: Radius.circular(10),
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            index == currentIndex
+                                ? selectedIcons[index]
+                                : unselectedIcons[index],
+                            size: 25,
+                            color: ThemeColors.prColor,
+                          ),
+                          Text(
+                            listOfTitles[index],
+                            style: context.bodyMedium.copyWith(
+                              color: ThemeColors.prColor,
+                              fontWeight: index == currentIndex
+                                  ? FontWeight.bold
+                                  : FontWeight.w300,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.grey[300],
-          selectedItemColor: ThemeColors.prColor,
-          iconSize: 20,
-          items: const [
-            BottomNavigationBarItem(
-                activeIcon: Icon(
-                  IconlyBold.home,
-                  size: 30,
-                ),
-                icon: Icon(
-                  IconlyLight.home,
-                  size: 30,
-                ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-              activeIcon: Icon(
-                IconlyBold.bag,
-                size: 30,
-              ),
-              icon: Icon(
-                IconlyLight.bag,
-                size: 30,
-              ),
-              label: 'Cart',
-            ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(
-                IconlyBold.document,
-                size: 30,
-              ),
-              icon: Icon(
-                IconlyLight.document,
-                size: 30,
-              ),
-              label: 'Notes',
-            ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(
-                IconlyBold.profile,
-                size: 30,
-              ),
-              icon: Icon(
-                IconlyLight.profile,
-                size: 30,
-              ),
-              label: 'Account',
-            ),
-          ],
-        ),
+              );
+            }),
       ),
     );
   }
+
+  List<IconData> unselectedIcons = [
+    IconlyLight.home,
+    IconlyLight.heart,
+    IconlyLight.bag,
+    IconlyLight.profile,
+  ];
+
+  List<IconData> selectedIcons = [
+    IconlyBold.home,
+    IconlyBold.heart,
+    IconlyBold.bag,
+    IconlyBold.profile,
+  ];
+  List<String> listOfTitles = [
+    'Home',
+    'Favourites',
+    'Cart',
+    'Account',
+  ];
 }

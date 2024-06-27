@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/shared/domain/entities/smart_room.dart';
+import '../../../core/models/category_model.dart';
 import '../../../core/theme/th_colors.dart';
 
 class PageIndicators extends StatelessWidget {

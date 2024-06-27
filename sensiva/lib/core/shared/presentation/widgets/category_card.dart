@@ -40,7 +40,7 @@ class CategoryCard extends StatelessWidget {
           Transform.scale(
             scale: lerpDouble(0.85, 1.2, value),
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 180),
+              padding: const EdgeInsets.only(left: 30, bottom: 80),
               child: CategoryInfoCard(room: category, translation: value),
             ),
           ),
@@ -48,7 +48,7 @@ class CategoryCard extends StatelessWidget {
           // category image card with parallax effect
           // -----------------------------------------------
           Padding(
-            padding: const EdgeInsets.only(bottom: 200),
+            padding: const EdgeInsets.only(left: 30, bottom: 70),
             child: Transform(
               transform: Matrix4.translationValues(0, -90 * value, 0),
               child: GestureDetector(
