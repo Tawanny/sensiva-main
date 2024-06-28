@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:iconly/iconly.dart';
-import 'package:sensiva/core/theme/th_colors.dart';
-import 'package:ui_common/ui_common.dart';
 
 import '../../components/product_heading.dart';
 import '../../components/product_item.dart';
