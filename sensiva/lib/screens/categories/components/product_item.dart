@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ui_common/ui_common.dart';
 
 import '../../../core/theme/theme.dart';
+import '../../screens.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
@@ -21,7 +23,11 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Get.to(
+        const ProductScreen(),
+        transition: Transition.zoom,
+        duration: const Duration(milliseconds: 700),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Card(
