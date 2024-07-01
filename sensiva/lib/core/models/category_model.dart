@@ -62,6 +62,7 @@ final _room = CategoryModel(
   id: '1',
   name: 'WEED NEWS',
   imageUrl: _imagesUrls[0],
+  screen: const News(),
 );
 
 const _imagesUrls = [
