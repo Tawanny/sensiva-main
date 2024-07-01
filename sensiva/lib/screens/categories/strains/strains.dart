@@ -137,7 +137,7 @@ class _StrainsState extends State<Strains> {
       onTap: () => Get.to(
         () => const StrainScreen(),
         arguments: strain,
-        transition: Transition.rightToLeftWithFade,
+        transition: Transition.zoom,
         duration: const Duration(seconds: 1),
       ),
       child: Card(

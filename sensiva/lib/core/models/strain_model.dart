@@ -10,7 +10,8 @@ class StrainModel {
     required this.name,
     this.imageUrl = 'assets/images/strains.png',
     required this.price,
-     this.desc = 'I\'m working on my packages on my free-time, but I don\'t have as much time as I would. If this package or any other package I created is helping you, please consider to sponsor me so that I can take time to read the issues, fix bugs, merge pull requests and add features to these packages.',
+    this.desc =
+        'Indoor AAA hybrid grade, cultivated between 19-32% THC. Best strain for someone looking for an energetic vibe with a satisfying head-high.',
   });
 }
 

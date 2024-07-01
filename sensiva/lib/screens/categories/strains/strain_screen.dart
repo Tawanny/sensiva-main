@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating/flutter_rating.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/core.dart';
 import 'package:sensiva/core/models/models.dart';
+import 'package:sensiva/screens/categories/aparatus/aparatus.dart';
 import 'package:ui_common/ui_common.dart';
+
+import '../components/product_item.dart';
 
 class StrainScreen extends StatelessWidget {
   const StrainScreen({super.key});
@@ -20,102 +24,135 @@ class StrainScreen extends StatelessWidget {
             SliverAppBar(
               expandedHeight: 300,
               automaticallyImplyLeading: false,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                ),
-              ),
+              pinned: true,
+              floating: true,
               leading: IconButton(
                 onPressed: () => Get.back(),
                 icon: const Icon(
                   IconlyLight.arrow_left_2,
-                  color: ThemeColors.selectedColor,
-                ),
-              ),
-              centerTitle: true,
-              title: Text(
-                strain.name,
-                style: context.titleLarge.copyWith(
-                  fontWeight: FontWeight.bold,
                   color: ThemeColors.textColor,
                 ),
               ),
               flexibleSpace: FlexibleSpaceBar(
-                background: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(50),
-                        bottomRight: Radius.circular(50),
-                      ),
-                      child: Hero(
-                        tag: strain.id,
-                        child: Image.asset(
-                          strain.imageUrl,
-                          fit: BoxFit.cover,
-                        ),
+                background: Hero(
+                  tag: strain.id,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: CircleAvatar(
+                      radius: 150,
+                      backgroundImage: AssetImage(
+                        strain.imageUrl,
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: ThemeColors.prColor.withOpacity(0.5),
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SizedBox.shrink(),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      margin: const EdgeInsets.only(right: 20),
-                      decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        'R${strain.price}\\gram',
-                        style: context.bodySmall.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: ThemeColors.textColor,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               actions: [
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    IconlyLight.bag,
-                    color: ThemeColors.textColor,
+                    IconlyBold.bag,
+                    color: ThemeColors.btnColor,
                   ),
                 ),
               ],
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Gap(20),
-                    Text(
-                      'Description',
-                      style: context.titleLarge.copyWith(
-                        color: ThemeColors.textColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            StarRating(
+                              rating: 4.5,
+                              size: 15,
+                            ),
+                            const Gap(5),
+                            Text(
+                              strain.name,
+                              style: context.displaySmall.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: ThemeColors.textColor,
+                                  fontSize: 25),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Colors.black87,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            'R${strain.price}\\gram',
+                            style: context.bodySmall.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: ThemeColors.textColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const Gap(10),
+                    const Gap(20),
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Grade',
+                              style: context.bodySmall.copyWith(
+                                color: ThemeColors.textColor.withOpacity(0.5),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              'AAA',
+                              style: context.titleSmall.copyWith(
+                                color: ThemeColors.textColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: 20.0, right: 5),
+                          child: Container(
+                            color: ThemeColors.textColor.withOpacity(0.5),
+                            width: 1,
+                            height: 30,
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Type',
+                              style: context.bodySmall.copyWith(
+                                color: ThemeColors.textColor.withOpacity(0.5),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              'Hybrid',
+                              style: context.titleSmall.copyWith(
+                                color: ThemeColors.textColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const Gap(20),
                     Text(
                       strain.desc,
                       style: context.bodyMedium.copyWith(
@@ -123,6 +160,51 @@ class StrainScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const Gap(30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Accessories you might need..',
+                          style: context.titleMedium.copyWith(
+                            color: ThemeColors.textColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Get.to(
+                              const Aparatus(),
+                              transition: Transition.rightToLeftWithFade,
+                              duration: const Duration(milliseconds: 500),
+                            );
+                          },
+                          child: Text(
+                            'View All',
+                            style: context.bodySmall.copyWith(
+                              color: ThemeColors.btnColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    const Gap(10),
+                    SizedBox(
+                      height: 260,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, index) {
+                            return const ProductItem(
+                              name: 'Gizeh Rolling tray',
+                              imageUrl: 'assets/images/aparatus.jpg',
+                              price: 60.00,
+                              mgs: 0,
+                            );
+                          }),
+                    )
                   ],
                 ),
               ),
