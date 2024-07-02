@@ -117,16 +117,7 @@ class ProductScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20),
-                                  child: Container(
-                                    color:
-                                        ThemeColors.textColor.withOpacity(0.5),
-                                    width: 1,
-                                    height: 25,
-                                  ),
-                                ),
+                               CustomDivider(color: ThemeColors.textColor.withOpacity(0.5)),
                                 Container(
                                   height: 27,
                                   width: 50,
@@ -146,16 +137,7 @@ class ProductScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20),
-                                  child: Container(
-                                    color:
-                                        ThemeColors.textColor.withOpacity(0.5),
-                                    width: 1,
-                                    height: 25,
-                                  ),
-                                ),
+                                CustomDivider(color: ThemeColors.textColor.withOpacity(0.5)),
                                 Container(
                                   height: 27,
                                   width: 50,

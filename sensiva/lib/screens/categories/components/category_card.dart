@@ -1,11 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sensiva/screens/categories/category_screen.dart';
 import 'package:ui_common/ui_common.dart';
 
-import '../../../../features/home/presentation/widgets/background_info_card.dart';
-import '../../../core.dart';
+import '../../../features/home/presentation/widgets/background_info_card.dart';
+import '../../../shared/widgets.dart';
+import 'category_item.dart';
+import '../../../core/core.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
@@ -41,7 +42,7 @@ class CategoryCard extends StatelessWidget {
             scale: lerpDouble(0.85, 1.2, value),
             child: Padding(
               padding: const EdgeInsets.only(left: 30, bottom: 80),
-              child: CategoryInfoCard(room: category, translation: value),
+              child: CategoryInfoCard(category: category, translation: value),
             ),
           ),
           // -----------------------------------------------
@@ -107,7 +108,7 @@ class CameraIconButton extends StatelessWidget {
         child: IconButton(
           onPressed: () {},
           icon: const Icon(
-            SHIcons.camera,
+            Icons.camera,
             color: ThemeColors.textColor,
           ),
         ),

@@ -1,12 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/core.dart';
-import 'package:sensiva/screens/categories/components/cat_app_bar.dart';
 import 'package:sensiva/screens/categories/news/tabs/news_tab.dart';
 import 'package:ui_common/ui_common.dart';
+import '../../../shared/shared.dart';
 import '../components/tabbar_item.dart';
 
 class News extends StatefulWidget {
@@ -133,54 +132,3 @@ class _NewsState extends State<News> {
   }
 }
 
-class CategoryItem extends StatelessWidget {
-  const CategoryItem({
-    required this.category,
-    required this.topPadding,
-    this.animation = const AlwaysStoppedAnimation<double>(1),
-    super.key,
-  });
-
-  final double topPadding;
-  final CategoryModel category;
-  final Animation<double> animation;
-
-  @override
-  Widget build(BuildContext context) {
-    final sigma = 10 * animation.value;
-    return Material(
-      type: MaterialType.transparency,
-      child: Hero(
-        tag: category.id,
-        child: Stack(
-          alignment: Alignment.center,
-          fit: StackFit.expand,
-          children: [
-            ParallaxImageCard(imageUrl: category.imageUrl),
-            ClipRRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaY: sigma, sigmaX: sigma),
-                child: const ColoredBox(color: Colors.transparent),
-              ),
-            ),
-            FadeTransition(
-              opacity: animation,
-              child: Container(
-                padding:
-                    EdgeInsets.only(top: context.mediaQuery.padding.top + 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Gap(20),
-                    CatAppBar(category: category),
-                    const Gap(70),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

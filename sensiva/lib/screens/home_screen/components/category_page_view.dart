@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/models/category_model.dart';
-import '../../../core/shared/presentation/widgets/category_card.dart';
+import '../../categories/components/category_card.dart';
 
 class CategoryPageView extends StatelessWidget {
   const CategoryPageView({
@@ -56,18 +57,10 @@ class CategoryPageView extends StatelessWidget {
                         onSwipeUp: () => catSelectorNotifier.value = index,
                         onSwipeDown: () => catSelectorNotifier.value = -1,
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                              transitionDuration: const Duration(
-                                microseconds: 800,
-                              ),
-                              reverseTransitionDuration: const Duration(
-                                microseconds: 800,
-                              ),
-                              pageBuilder: (_, animation, __) => FadeTransition(
-                                  opacity: animation, child: category.screen),
-                            ),
+                          Get.to(
+                            category.screen,
+                            transition: Transition.fade,
+                            duration: const Duration(milliseconds: 600),
                           );
                           catSelectorNotifier.value = -1;
                         },

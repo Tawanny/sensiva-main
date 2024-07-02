@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/core.dart';
+import 'package:sensiva/shared/widgets.dart';
 import 'package:ui_common/ui_common.dart';
 
 import '../components/tabbar_item.dart';

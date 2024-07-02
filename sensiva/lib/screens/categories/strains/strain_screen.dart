@@ -6,6 +6,7 @@ import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/core.dart';
 import 'package:sensiva/core/models/models.dart';
 import 'package:sensiva/screens/categories/aparatus/aparatus.dart';
+import 'package:sensiva/shared/widgets.dart';
 import 'package:ui_common/ui_common.dart';
 
 import '../components/product_item.dart';
@@ -122,15 +123,7 @@ class StrainScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 20.0, right: 5),
-                          child: Container(
-                            color: ThemeColors.textColor.withOpacity(0.5),
-                            width: 1,
-                            height: 30,
-                          ),
-                        ),
+                         CustomDivider(color: ThemeColors.textColor.withOpacity(0.5)),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -279,3 +272,5 @@ class StrainScreen extends StatelessWidget {
     );
   }
 }
+
+

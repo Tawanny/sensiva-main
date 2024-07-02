@@ -6,6 +6,7 @@ import 'package:sensiva/screens/home_screen/tabs/favourite.dart';
 import 'package:ui_common/ui_common.dart';
 
 import '../../features/home/presentation/widgets/lighted_background.dart';
+import '../../shared/shared.dart';
 import 'tabs/cart.dart';
 import 'tabs/home.dart';
 

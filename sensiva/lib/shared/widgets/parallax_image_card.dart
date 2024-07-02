@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:ui_common/ui_common.dart';
 
-import '../../../theme/th_colors.dart';
+import '../../core/theme/th_colors.dart';
 
 class ParallaxImageCard extends StatelessWidget {
   const ParallaxImageCard(

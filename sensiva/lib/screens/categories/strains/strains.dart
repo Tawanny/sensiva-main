@@ -7,8 +7,7 @@ import 'package:iconly/iconly.dart';
 import 'package:sensiva/core/core.dart';
 import 'package:sensiva/screens/screens.dart';
 import 'package:ui_common/ui_common.dart';
-
-import '../../../core/models/models.dart';
+import '../../../shared/shared.dart';
 
 class Strains extends StatefulWidget {
   const Strains({
